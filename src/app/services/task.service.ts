@@ -6,11 +6,15 @@ import { Task } from '../interfaces/task';
   providedIn: 'root'
 })
 export class TaskService {
-  
+ 
   constructor(private http:HttpClient) { }
 
   get_tasks() {
     return this.http.get<Task[]>("http://localhost:3000");
+  }
+
+  get_tasks_by_progress(query: string) {
+    return this.http.get<Task[]>(`http://localhost:3000/filter?progress=${query}`);
   }
 
   add_task(data) {

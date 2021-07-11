@@ -11,7 +11,10 @@ export class TasksPage {
   tasks: Task[];
 
   constructor(private _service: TaskService) {
-    _service.get_tasks().subscribe((result) => {
+  }
+
+  ionViewWillEnter() {
+    this._service.get_tasks().subscribe((result) => {
       this.tasks = result;
     }, (err) => {
       console.log(err);
